@@ -15,7 +15,8 @@ app.get('/audio', async (req, res) => {
       noCheckCertificates: true,
       noWarnings: true,
       preferFreeFormats: true,
-      addHeader: ['referer:youtube.com', 'user-agent:googlebot']
+      addHeader: ['referer:youtube.com', 'user-agent:googlebot'],
+      cookiefile: 'cookies.txt'
     });
     const audio = info.formats.find(f => f.ext === 'm4a' && f.acodec !== 'none' && f.url);
     if (!audio) return res.status(404).json({ error: 'No audio found' });
